@@ -5,8 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        spaceGrotest:['Space Grotesk', 'sans-serif'],
+      } 
+    },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 
