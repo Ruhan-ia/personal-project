@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "name": "Product 1",
+      "image": "https://i.postimg.cc/PqxCkyyn/toy-888.jpg",
+      "rating": 4.5,
+      "price": 19.99
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "image": "https://i.postimg.cc/PfZPhPWJ/toy-999.jpg",
+      "rating": 3.8,
+      "price": 24.99
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "image": "https://i.postimg.cc/8ch5b0pM/toy-1111.jpg",
+      "rating": 5.0,
+      "price": 34.99
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "image":"https://i.postimg.cc/Tw5hKPBk/toy-122.jpg",
+      "rating": 4.2,
+      "price": 14.99
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "image": "https://i.postimg.cc/Fsydb7z8/toy-133.jpg",
+      "rating": 4.0,
+      "price": 29.99
+    },
+    {
+      "id": 6,
+      "name": "Product 6",
+      "image": "https://i.postimg.cc/WpXHnLb7/toy-144.jpg",
+      "rating": 4.8,
+      "price": 39.99
+    }
+  ]
+  

@@ -19,7 +19,7 @@ const WaysToShop = () => {
     gsap.to(e, {
       opacity: 1,
       y: -60,
-      delay: 0.1,
+      
 
       duration: 1,
       ease: "ease",
@@ -31,7 +31,7 @@ const WaysToShop = () => {
   const fadeOut = (e) => {
     gsap.to(e, {
       opacity: 0,
-      delay: 0.1,
+      
       y: -20,
       duration: 1,
       ease: "easeOut",

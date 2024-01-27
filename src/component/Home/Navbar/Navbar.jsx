@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext)
+
+  const handleLogOut = () =>{
+    logOut()
+    .then((result) =>{
+      const loggedUser = result.user;
+      console.log(loggedUser)
+    })
+    .catch(() =>{
+
+    })
+  }
   return (
     <div className="navbar bg-black  bg-opacity-5 z-10 fixed ">
       <div className="navbar-start">
@@ -26,16 +40,15 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+            <Link to='/'>Home</Link>
             </li>
             <li>
-              <a>Item 2
+            <Link to='/about'>About</Link>
 
-              </a>
               
             </li>
             <li>
-              <a>Item 3</a>
+            <Link to='/cart'>Cart</Link>
             </li>
           </ul>
         </div>
@@ -45,18 +58,22 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li className="text-cyan-400 font-semibold ">
-            <a>Home</a>
+            <Link to='/'>Home</Link>
           </li>
           <li className="text-cyan-400 font-semibold ">
-           <a>About</a>
+          <Link to='/about'>About</Link>
           </li>
           <li className="text-cyan-400 font-semibold ">
-            <a>Cart</a>
+          <Link to='/cart'>Cart</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        {
+          user?<><button onClick={handleLogOut} className="btn">LogOut</button></>:
+          <><Link to='/login' className="btn">Login</Link>
+          </>
+        }
       </div>
     </div>
   );

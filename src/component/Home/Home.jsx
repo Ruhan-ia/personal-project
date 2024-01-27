@@ -1,5 +1,6 @@
 import Banner from '../Banner/Banner';
 import OurPolicy from '../OurPolicy/OurPolicy';
+import Contact from '../ToyCards/Contact/Contact';
 
 import ToyCards from '../ToyCards/ToyCards';
 import WaysToShop from '../WaysToShop/WaysToShop';
@@ -11,7 +12,8 @@ const Home = () => {
             <Banner></Banner>
             <ToyCards></ToyCards>
             <OurPolicy></OurPolicy>
-            <WaysToShop></WaysToShop>
+           <WaysToShop></WaysToShop>
+            <Contact></Contact>
 
         </div>
     );
