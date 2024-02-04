@@ -47,8 +47,9 @@ const Navbar = () => {
 
               
             </li>
+            
             <li>
-            <Link to='/cart'>Cart</Link>
+            <Link to='/dashBoard'>Dashboard</Link>
             </li>
           </ul>
         </div>
@@ -64,8 +65,9 @@ const Navbar = () => {
           <Link to='/about'>About</Link>
           </li>
           <li className="text-cyan-400 font-semibold ">
-          <Link to='/cart'>Cart</Link>
-          </li>
+            <Link to='/dashBoard'>Dashboard</Link>
+            </li>
+         
         </ul>
       </div>
       <div className="navbar-end">
