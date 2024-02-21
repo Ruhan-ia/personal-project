@@ -1,22 +1,24 @@
 
-import  { useEffect, useRef, useState } from 'react';
+import  {  useRef,  } from 'react';
 import gsap from "gsap";
 // import { useGSAP } from '@gsap/react';
 import { useIntersection } from 'react-use';
 import Toys from './Toys';
+import useToys from '../../Hook/useToys';
 
 
 const ToyCards = () => {
-  const [toy, setToy ] = useState([]);
+  const [toys] = useToys();
+  const topToys = toys.filter(toy => toy.category === 'top')
 
-  useEffect(() => {
-    fetch("http://localhost:5000/details/")
-    .then(res =>
-      res.json()
-    )
-    .then(data => setToy(data))
-    .catch(error =>{console.log(error.message)})
-  }, [])
+  // useEffect(() => {
+  //   fetch("https://personal-project-server-mu.vercel.app/details")
+  //   .then(res =>
+  //     res.json()
+  //   )
+  //   .then(data => setToy(data))
+  //   .catch(error =>{console.log(error.message)})
+  // }, [])
   const section = useRef(null)
   const intersection =  useIntersection(section, {
     root: null,
@@ -57,7 +59,7 @@ intersection &&  intersection.intersectionRatio < .2 ?
             <h1 className='font-bold p-10 text-6xl text-center font-spaceGrotest  text-orange-500'><span className='font-bold  text-6xl  text-green-600'>Top</span> Toys</h1>
         <div  className=' grid lg:grid-cols-3 gap-5  container mx-auto'>
             {
-              toy.map(t => <Toys key={t.id} t = {t}></Toys>)
+              topToys.map(t => <Toys key={t.id} t = {t}></Toys>)
             }
 
       

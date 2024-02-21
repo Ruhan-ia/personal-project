@@ -24,7 +24,7 @@ const SignUp = () => {
         email:loggedUser.email
         ,
       }
-       fetch('http://localhost:5000/dashBoard/user', {
+       fetch('https://personal-project-server-mu.vercel.app/dashBoard/user', {
         method:'POST',
         headers:{
           'content-type':'application/json'
@@ -64,7 +64,7 @@ const SignUp = () => {
           photo:data.photo,
           email: data.email,
         }
-         fetch('http://localhost:5000/dashBoard/user', {
+         fetch('https://personal-project-server-mu.vercel.app/dashBoard/user', {
           method:'POST',
           headers:{
             'content-type':'application/json'

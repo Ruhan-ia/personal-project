@@ -1,15 +1,15 @@
 import { data } from 'autoprefixer';
-import React, { useEffect, useState } from 'react';
 import Users from './Users/Users';
+import useUser from '../../Hook/useUser';
 
 const AllUser = () => {
-    const [users, setUsers] = useState([])
+    const [users] = useUser();
 
-    useEffect(()=>{
-        fetch("http://localhost:5000/dashBoard/user")
-        .then(res => res.json())
-        .then(data => setUsers(data))
-    }, [])
+    // useEffect(()=>{
+    //     fetch("https://personal-project-server-mu.vercel.app/dashBoard/user")
+    //     .then(res => res.json())
+    //     .then(data => setUsers(data))
+    // }, [])
     return (
         <div className="overflow-x-auto ">
         <table className="table table-lg  ">

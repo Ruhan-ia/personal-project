@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FcUndo } from "react-icons/fc";
+import useCart from '../../Hook/useCart';
 const Dashboard = () => {
+  const [cart] =useCart();
+
     return (
         <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -22,7 +25,10 @@ const Dashboard = () => {
        AllUser
       </Link></li>
       <li className="text-xl font-bold font-spaceGrotest    ">
-          <Link to='/dashBoard/cart'>Cart</Link>
+          <Link to='/dashBoard/cart'>Cart
+          <span className="badge badge-secondary">+{cart?.length || 0}</span>
+
+          </Link>
           </li>
       <li>
         <Link to='/'><span className='text-green-500 font-spaceGrotes font-semibold '>Go Back</span>< FcUndo ></FcUndo></Link>

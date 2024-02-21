@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useCart from "../../../Hook/useCart";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext)
-
+  const {user, logOut} = useContext(AuthContext);
+  const [cart] =useCart()
   const handleLogOut = () =>{
     logOut()
     .then((result) =>{
@@ -49,7 +50,11 @@ const Navbar = () => {
             </li>
             
             <li>
-            <Link to='/dashBoard'>Dashboard</Link>
+            <Link to='/dashBoard'>Dashboard
+            <span className="badge badge-secondary">+{cart?.length || 0}</span>
+            </Link>
+           
+
             </li>
           </ul>
         </div>
@@ -65,7 +70,11 @@ const Navbar = () => {
           <Link to='/about'>About</Link>
           </li>
           <li className="text-cyan-400 font-semibold ">
-            <Link to='/dashBoard'>Dashboard</Link>
+            <Link to='/dashBoard'>Dashboard
+            <span className="badge badge-secondary">+{cart?.length || 0}</span>
+
+            </Link>
+            
             </li>
          
         </ul>
