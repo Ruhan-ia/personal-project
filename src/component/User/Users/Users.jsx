@@ -2,13 +2,48 @@ import React from 'react';
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import useUser from '../../../Hook/useUser';
-
+import { RiAdminFill } from "react-icons/ri";
 
 const Users = ({user}) => {
     const [, refetch] = useUser();
-    const {email, name, photo, _id} = user;
+    const {email, name, photo, _id, role} = user;
 
     console.log(user)
+
+    const handleMakeAdmin = user =>{
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Make it Admin!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`https://personal-project-server-mu.vercel.app/dashBoard/user/admin/${user._id}`,{
+  
+          method:'PATCH'
+          })
+          .then(res => res.json())
+          .then(data =>{
+            console.log(data)
+            if(data.modifiedCount){
+
+              refetch();
+              Swal.fire({
+                title: `${user.name} is an Admin Now!`,
+                text: "Your file has been modified.",
+                icon: "success"
+              });
+            }
+          })
+          
+          
+         
+        }
+      });
+    }
 
     const handleDelete = user =>{
       console.log(user)
@@ -68,6 +103,9 @@ const Users = ({user}) => {
         </td>
         <td>
           {email}
+        </td>
+        <td>
+          {role == 'admin' ? 'admin' : <button onClick={() => handleMakeAdmin(user)}><RiAdminFill className='text-2xl text-red-600 font-bold' /></button>}
         </td>
         <th>
           <button onClick={() => handleDelete(user)} className="btn btn-square btn-outline"><FaTrashCan className='text-2xl text-red-600 font-bold' /></button>

@@ -4,7 +4,6 @@ import { useIntersection } from "react-use";
 import gsap from "gsap";
 const OurPolicy = () => {
   const section2 = useRef(null);
-  const section3 = useRef(null);
   const intersection = useIntersection(section2, {
     root: null,
     rootMargin: "0px",
@@ -28,7 +27,7 @@ const OurPolicy = () => {
     gsap.to(e, {
       opacity: 0,
       
-      y: -20,
+      y: -40,
       duration: 1,
       ease: "easeOut",
     });

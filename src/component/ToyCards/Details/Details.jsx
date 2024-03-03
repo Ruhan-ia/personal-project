@@ -61,9 +61,9 @@ const Details = () => {
         </p>
         <div className="card-actions justify-end">
        {
-        user? <><button className="btn btn-outline btn-warning" onClick={handleCart}>Add To Cart</button></>
+        user? <><button className="btn   text-white bg-gradient-to-r from-sky-300 via-purple-400 to-pink-400 hover:from-pink-500 hover:via-orange-500 hover:to-yellow-500" onClick={handleCart}>Add To Cart</button></>
         :
-         <> <Link to='/login' className="btn">Add To Cart</Link></>
+         <> <Link to='/login' className="btn  text-white bg-gradient-to-r from-sky-300 via-purple-400 to-pink-400 hover:from-pink-500 hover:via-orange-500 hover:to-yellow-500">Add To Cart</Link></>
        }       
         </div>
       </div>

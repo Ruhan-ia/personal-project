@@ -5,6 +5,8 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2';
+import Lottie from 'react-lottie-player';
+import animationData from '../../assets/Animation - 2.json'
 
 
 
@@ -97,7 +99,13 @@ const SignUp = () => {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">SignUp now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <div>
+              <Lottie 
+              animationData={animationData}
+              play
+              loop
+              style={{ width: 500, height: 500 }}></Lottie>
+            </div>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">

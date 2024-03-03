@@ -14,7 +14,7 @@ const Toys = ({ t }) => {
           <h2 className="card-title">{name}</h2>
           <div className="card-actions justify-end">
             <Link to={`/details/${_id}`}>
-            <button className="btn">Details</button>
+            <button className="btn text-white bg-gradient-to-r from-sky-300 via-purple-400 to-pink-400 hover:from-pink-500 hover:via-orange-500 hover:to-yellow-500">Details</button>
 
             </Link>
           </div>

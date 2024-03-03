@@ -33,6 +33,7 @@ import Age89 from './component/WaysToShop/ByAge/8-9age.jsx';
 import Age1011 from './component/WaysToShop/ByAge/10-11age.jsx';
 import Age1112 from './component/WaysToShop/ByAge/11-12age.jsx';
 import Ego from './component/WaysToShop/ByBrands/Ego.jsx';
+import DashHome from './component/Dashboard/DashHome.jsx';
 
 const router = createBrowserRouter([
   {
@@ -109,6 +110,8 @@ const router = createBrowserRouter([
       children:[
         {path:"cart",
         element:<Cart></Cart>},
+        {path:"home",
+        element:<DashHome></DashHome>},
         {path:"allUser",
         element:<AllUser></AllUser>},
         {

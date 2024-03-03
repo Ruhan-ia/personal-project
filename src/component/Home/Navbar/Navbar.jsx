@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useCart from "../../../Hook/useCart";
 
+
+
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
   const [cart] =useCart()
@@ -50,7 +52,7 @@ const Navbar = () => {
             </li>
             
             <li>
-            <Link to='/dashBoard'>Dashboard
+            <Link to='/dashBoard/home'>Dashboard
             <span className="badge badge-secondary">+{cart?.length || 0}</span>
             </Link>
            
@@ -70,9 +72,9 @@ const Navbar = () => {
           <Link to='/about'>About</Link>
           </li>
           <li className="text-cyan-400 font-semibold ">
-            <Link to='/dashBoard'>Dashboard
+            <Link to='/dashBoard/home'>Dashboard
             <span className="badge badge-secondary">+{cart?.length || 0}</span>
-
+        
             </Link>
             
             </li>
@@ -81,8 +83,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {
-          user?<><button onClick={handleLogOut} className="btn">LogOut</button></>:
-          <><Link to='/login' className="btn">Login</Link>
+          user?<><button onClick={handleLogOut} className="btn   text-white bg-gradient-to-r from-sky-300 via-purple-400 to-pink-400 hover:from-pink-500 hover:via-orange-500 hover:to-yellow-500">LogOut</button></>:
+          <><Link to='/login' className="btn  text-white bg-gradient-to-r from-sky-300 via-purple-400 to-pink-400 hover:from-pink-500 hover:via-orange-500 hover:to-yellow-500">Login</Link>
           </>
         }
       </div>

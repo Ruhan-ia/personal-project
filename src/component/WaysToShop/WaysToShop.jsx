@@ -19,7 +19,7 @@ const WaysToShop = () => {
   const fadeIn = (e) => {
     gsap.to(e, {
       opacity: 1,
-      y: -60,
+      y: -40,
       
 
       duration: 1,

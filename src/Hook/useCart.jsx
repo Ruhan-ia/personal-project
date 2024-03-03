@@ -4,11 +4,17 @@ import { useQuery } from '@tanstack/react-query';
 
 const useCart = () => {
     const {user} = useContext(AuthContext)
+    const token = localStorage.getItem('access-token')
+
 
     const {refetch, data: cart = []} = useQuery({
         queryKey:[ 'carts', user?.email ],
         queryFn:async () =>{
-            const res = await fetch(`https://personal-project-server-mu.vercel.app/dashBoard/carts?email=${user?.email}`)
+            const res = await fetch(`https://personal-project-server-mu.vercel.app/dashBoard/carts?email=${user?.email}`, 
+            
+            {headers: {
+                authorization : `bearer ${token}`
+            }})
             return res.json()
         }
 

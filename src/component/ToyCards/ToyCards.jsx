@@ -5,6 +5,9 @@ import gsap from "gsap";
 import { useIntersection } from 'react-use';
 import Toys from './Toys';
 import useToys from '../../Hook/useToys';
+import animationData from '../../assets/car.json'
+
+import Lottie from 'react-lottie-player';
 
 
 const ToyCards = () => {
@@ -57,6 +60,15 @@ intersection &&  intersection.intersectionRatio < .2 ?
         <>
         <section ref={section}   className='mt-20 fadein '>
             <h1 className='font-bold p-10 text-6xl text-center font-spaceGrotest  text-orange-500'><span className='font-bold  text-6xl  text-green-600'>Top</span> Toys</h1>
+            <div className='text-center  flex justify-center items-center mx-auto justify-items-center'>
+             <div>
+              <Lottie
+              animationData={animationData}
+              play
+              loop
+              style={{ width: 150, height: 150 }}></Lottie>
+              </div>
+            </div>
         <div  className=' grid lg:grid-cols-3 gap-5  container mx-auto'>
             {
               topToys.map(t => <Toys key={t.id} t = {t}></Toys>)
