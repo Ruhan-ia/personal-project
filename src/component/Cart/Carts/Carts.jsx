@@ -1,7 +1,7 @@
 import React from "react";
 import useCart from "../../../Hook/useCart";
 import Swal from "sweetalert2";
-
+import { GrAdd } from "react-icons/gr";
 const Carts = ({ product }) => {
   const [, refetch] = useCart();
   const { image,name,rating,price, _id } = product;
@@ -52,10 +52,13 @@ const Carts = ({ product }) => {
       </div>{" "}
       <div className="card-body">
         <h2 className="card-title font-spaceGrotest font-bold">{name}</h2>
+
         <p className="font-spaceGrotest font-semibold ">Ratings: <span className="text-green-600 font-semibold">{rating}</span></p>
         <p className="text-red-500 font-spaceGrotest ">${price}</p>
         
-        <div className="card-actions justify-end ">
+        <div className="card-actions flex justify-end ">
+        <button  className="btn btn-outline "><GrAdd /></button>
+
           <button onClick={() => handleDelete(product)} className="btn btn-outline btn-warning">Remove</button>
         </div>
       </div>

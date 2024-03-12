@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -34,6 +33,8 @@ import Age1011 from './component/WaysToShop/ByAge/10-11age.jsx';
 import Age1112 from './component/WaysToShop/ByAge/11-12age.jsx';
 import Ego from './component/WaysToShop/ByBrands/Ego.jsx';
 import DashHome from './component/Dashboard/DashHome.jsx';
+import AddItem from './component/AddItem/AddItem.jsx';
+import AdminRoute from './PrivateRoute/AdminRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -113,7 +114,9 @@ const router = createBrowserRouter([
         {path:"home",
         element:<DashHome></DashHome>},
         {path:"allUser",
-        element:<AllUser></AllUser>},
+        element:<AdminRoute><AllUser></AllUser></AdminRoute>},
+        {path:"addItem",
+        element:<AdminRoute><AddItem></AddItem></AdminRoute>},
         {
           path:"profile",
           element:<Profile></Profile>
@@ -128,7 +131,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
     <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router}></RouterProvider>
+    
     </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,

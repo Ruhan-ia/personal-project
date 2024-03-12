@@ -12,7 +12,7 @@ const Banner = () => {
     return (
         <Carousel dynamicHeight={true} >
         <div>
-            <img src={toy1}/>
+            <img src={toy3}/>
         </div>
         <div>
             <img src={toy2}/>
@@ -21,7 +21,7 @@ const Banner = () => {
             <img src={toy7}/>
         </div>
         <div>
-            <img src={toy3} />
+            <img src={toy1} />
         </div>
         <div>
             <img src={toy4} />

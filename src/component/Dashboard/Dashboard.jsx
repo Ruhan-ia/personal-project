@@ -2,11 +2,13 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FcUndo } from "react-icons/fc";
 import useCart from '../../Hook/useCart';
+import useAdmin from '../../Hook/useAdmin';
 const Dashboard = () => {
   const [cart] =useCart();
 
-  const isAdmin = true;
+  // const isAdmin = true;
   // const isCoAdmin = true;
+  const [isAdmin] = useAdmin();
 
     return (
         <div className="drawer lg:drawer-open">
@@ -65,8 +67,8 @@ const Dashboard = () => {
       <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/profile'>
        Profile
       </Link></li>
-      <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/profile'>
-       Add Toys
+      <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/addItem'>
+       Add An Toy
       </Link></li>
       <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/AllUser'>
        AllUser

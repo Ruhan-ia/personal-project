@@ -41,13 +41,13 @@ const AuthProvider = ({children}) => {
                 axios.post('https://personal-project-server-mu.vercel.app/jwt', {email:loggedUser.email} )
                 .then(data =>{
                     localStorage.setItem('access-token', data.data.token)
+                    setLoader(false)
 
                 })
             }
             else{
                 localStorage.removeItem('access-token')
             }
-            setLoader(false)
             
         })
 
