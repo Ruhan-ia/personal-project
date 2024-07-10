@@ -70,6 +70,9 @@ const Dashboard = () => {
       <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/addItem'>
        Add An Toy
       </Link></li>
+      <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/manageItem'>
+       Manage Item
+      </Link></li>
       <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/AllUser'>
        AllUser
       </Link></li>

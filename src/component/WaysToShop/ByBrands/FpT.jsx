@@ -1,15 +1,16 @@
 import React from 'react';
-import useToys from '../../../Hook/useToys';
 import Shop from '../Shop/Shop';
+import useToys from '../../../Hook/useToys';
 
-const Fp = () => {
+const FpT = () => {
     const [toys] = useToys();
     const Fp = toys.filter(toy => toy.brand === 'fp')
     return (
         <div>
-            <Shop AllToy={Fp}></Shop>
+
+         <Shop AllToy={Fp}></Shop>
         </div>
     );
 };
 
-export default Fp;
+export default FpT;

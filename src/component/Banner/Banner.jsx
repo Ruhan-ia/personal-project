@@ -1,4 +1,3 @@
-import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import toy1 from './../../assets/toys/toy-122.jpg';
@@ -10,7 +9,7 @@ import toy6 from './../../assets/toys/toy-66.jpg'
 import toy7 from './../../assets/toys/toy-11.jpg'
 const Banner = () => {
     return (
-        <Carousel dynamicHeight={true} >
+        <Carousel dynamicHeight={true} autoPlay={true}>
         <div>
             <img src={toy3}/>
         </div>

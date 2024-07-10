@@ -22,7 +22,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import Fp from './component/WaysToShop/ByBrands/fp.jsx';
 import Hasbro from './component/WaysToShop/ByBrands/Hasbro.jsx';
 import Mattel from './component/WaysToShop/ByBrands/Mattel.jsx';
 import Tomiyama from './component/WaysToShop/ByBrands/Tomiyama.jsx';
@@ -35,6 +34,9 @@ import Ego from './component/WaysToShop/ByBrands/Ego.jsx';
 import DashHome from './component/Dashboard/DashHome.jsx';
 import AddItem from './component/AddItem/AddItem.jsx';
 import AdminRoute from './PrivateRoute/AdminRoute.jsx';
+import ManageItem from './component/ManageItem/ManageItem.jsx';
+import FpT from './component/WaysToShop/ByBrands/FpT.jsx';
+import ScrollUp from './component/ScrollUp/ScrollUp.jsx';
 
 const router = createBrowserRouter([
   {
@@ -57,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/fp",
-        element:<Fp></Fp>
+        element:<FpT></FpT>
       },
       {
         path:"/lego",
@@ -117,6 +119,8 @@ const router = createBrowserRouter([
         element:<AdminRoute><AllUser></AllUser></AdminRoute>},
         {path:"addItem",
         element:<AdminRoute><AddItem></AddItem></AdminRoute>},
+        {path:"manageItem",
+        element:<AdminRoute><ManageItem></ManageItem></AdminRoute>},
         {
           path:"profile",
           element:<Profile></Profile>
@@ -135,5 +139,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     
     </QueryClientProvider>
     </AuthProvider>
+    <ScrollUp></ScrollUp>
   </React.StrictMode>,
 )

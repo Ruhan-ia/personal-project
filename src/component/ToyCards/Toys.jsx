@@ -5,9 +5,9 @@ const Toys = ({ t }) => {
 
     const {name,image,rating,price, _id}= t ;
     return (
-        <div className="card rounded-bl-full card-side bg-base-100 shadow-xl">
+        <div className="card w-auto rounded-bl-full card-side bg-base-100 shadow-xl">
         <div className="avatar">
-  <div className="w-auto rounded-bl-full">
+  <div className="w-auto lg:w-2/3  rounded-bl-full">
     <img  src={image} alt="car"/>
   </div>
 </div>        <div className="card-body">

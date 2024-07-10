@@ -1,13 +1,15 @@
-import React, { useRef } from "react";
 import ByBrands from "./ByBrands/ByBrands";
-import gsap from "gsap";
-import { useIntersection } from "react-use";
+
+
 import age1 from '../../assets/toys/age11.jpg';
 import age2 from '../../assets/toys/age22.jpg';
 import age3 from '../../assets/toys/age33.jpg';
 import age4 from '../../assets/toys/age44.jpg';
 import age5 from '../../assets/toys/age55.jpg';
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useRef } from "react";
+import { useIntersection } from "react-use";
 const WaysToShop = () => {
   const section3 = useRef(null);
   const intersection = useIntersection(section3, {

@@ -1,4 +1,3 @@
-import React from 'react';
 import useToys from '../../../Hook/useToys';
 import Shop from '../Shop/Shop';
 

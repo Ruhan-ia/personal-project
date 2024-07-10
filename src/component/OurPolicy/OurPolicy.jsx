@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
-import pic from "./../../assets/toys/toy-133.jpg";
-import { useIntersection } from "react-use";
 import gsap from "gsap";
+import pic from "./../../assets/toys/toy-133.jpg";
+import { useRef } from "react";
+import { useIntersection } from "react-use";
 const OurPolicy = () => {
   const section2 = useRef(null);
   const intersection = useIntersection(section2, {
