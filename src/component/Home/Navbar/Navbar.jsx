@@ -4,6 +4,8 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useCart from "../../../Hook/useCart";
 import { BsCart3 } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
+import SearchBar from "../../SearchBar/SearchBar";
+import SearchProduct from "../../SearchProduct/SearchProduct";
 
 
 const Navbar = () => {
@@ -69,20 +71,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center  ">
-      <div className="flex items-center ">
-       
-            <input
-              type="text"
-              placeholder="Search Toy here"
-              className="input input-bordered  w-auto lg:w-full input-secondary"
-            />
-            <div>
-              <button className="btn btn-square   btn-secondary bg-rose-400  ">
-                <GoSearch className="lg:text-2xl font-semibold"></GoSearch>
-             
-              </button>
-            </div>
-          </div>
+    <SearchProduct></SearchProduct>
        
       </div>
       <div className="navbar-end ">
