@@ -1,6 +1,7 @@
 import React, {  } from 'react';
 import Carts from './Carts/Carts';
 import useCart from '../../Hook/useCart';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     // const {user} = useContext(AuthContext)
@@ -17,7 +18,9 @@ const Cart = () => {
             <div className='flex justify-center items-center my-10 gap-5'>
            <h3 className='text-green-600 font-spaceGrotest font-bold text-4xl'>Total amount:  <span className='text-3xl text-red-500  font-semibold font-spaceGrotest'>${total}</span></h3>
             <div className="card-actions justify-end">
-        <button className="btn btn-outline btn-secondary">Pay Now</button>
+        {cart.length ?<Link to='/dashBoard/payment'><button className="btn btn-outline btn-secondary">Pay Now</button></Link>:
+            <button disabled className="btn btn-outline btn-secondary">Pay Now</button>
+        }
       </div>
       </div>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3 text-center mx-auto'>

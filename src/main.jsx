@@ -37,6 +37,7 @@ import AdminRoute from './PrivateRoute/AdminRoute.jsx';
 import ManageItem from './component/ManageItem/ManageItem.jsx';
 import FpT from './component/WaysToShop/ByBrands/FpT.jsx';
 import ScrollUp from './component/ScrollUp/ScrollUp.jsx';
+import Payment from './component/Dashboard/Payment/Payment.jsx';
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,8 @@ const router = createBrowserRouter([
       children:[
         {path:"cart",
         element:<Cart></Cart>},
+        {path:"payment",
+        element:<Payment></Payment>},
         {path:"home",
         element:<DashHome></DashHome>},
         {path:"allUser",
