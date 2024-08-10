@@ -8,7 +8,7 @@ const CheckOutForm = () => {
     const [clientSecret, setClientSecret] = useState('');
     const stripe = useStripe();
     const elements = useElements();
-    const axiosSecure = useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
     const [cart] =useCart();
     const totalPrice = cart.reduce((total, toy)=> total + toy.price, 0)
 
