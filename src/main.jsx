@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
@@ -31,13 +31,15 @@ import Age89 from './component/WaysToShop/ByAge/8-9age.jsx';
 import Age1011 from './component/WaysToShop/ByAge/10-11age.jsx';
 import Age1112 from './component/WaysToShop/ByAge/11-12age.jsx';
 import Ego from './component/WaysToShop/ByBrands/Ego.jsx';
-import DashHome from './component/Dashboard/DashHome.jsx';
 import AddItem from './component/AddItem/AddItem.jsx';
 import AdminRoute from './PrivateRoute/AdminRoute.jsx';
 import ManageItem from './component/ManageItem/ManageItem.jsx';
 import FpT from './component/WaysToShop/ByBrands/FpT.jsx';
 import ScrollUp from './component/ScrollUp/ScrollUp.jsx';
 import Payment from './component/Dashboard/Payment/Payment.jsx';
+import PaymentHistory from './component/Dashboard/Payment/PaymentHistory/PaymentHistory.jsx';
+import AdminHome from './component/Dashboard/AdminHome.jsx';
+import UserHome from './component/Dashboard/UserHome/UserHome.jsx';
 
 const router = createBrowserRouter([
   {
@@ -116,8 +118,18 @@ const router = createBrowserRouter([
         element:<Cart></Cart>},
         {path:"payment",
         element:<Payment></Payment>},
-        {path:"home",
-        element:<DashHome></DashHome>},
+        {path:"paymentHistory",
+        element:<PaymentHistory></PaymentHistory>},
+        {path:"userHome",
+        element:<UserHome></UserHome>
+        },
+        {path:"adminHome",
+        element:<AdminRoute>
+          
+          
+          <AdminHome></AdminHome>
+         
+          </AdminRoute>},
         {path:"allUser",
         element:<AdminRoute><AllUser></AllUser></AdminRoute>},
         {path:"addItem",
@@ -142,6 +154,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     
     </QueryClientProvider>
     </AuthProvider>
+    
     <ScrollUp></ScrollUp>
   </React.StrictMode>,
 )

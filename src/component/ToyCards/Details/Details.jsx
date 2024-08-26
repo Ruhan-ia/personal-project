@@ -1,19 +1,23 @@
 import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useCart from "../../../Hook/useCart";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const Details = () => {
   const details = useLoaderData();
   const { user } = useContext(AuthContext);
   const [, refetch] = useCart();
+  const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure();
 
   const { name, image, rating, price, _id } = details;
   console.log(details);
 
   const handleCart = (details) => {
     if (user && user.email) {
+      console.log(user.email, details)
       const product = {
         image,
         toyID: _id,
@@ -22,24 +26,21 @@ const Details = () => {
         price,
         email: user.email,
       };
-      fetch("https://personal-project-server-mu.vercel.app/dashBoard/carts", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.insertedId) {
+
+      axiosSecure.post('/dashBoard/carts', product)
+      
+        
+        .then((res) => {
+          if(res.data.insertedId){
             refetch();
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: " successfully added to cart!!",
+              title: `${name}successfully added to cart!!`,
               showConfirmButton: false,
               timer: 1500,
             });
+            navigate('/dashBoard/cart')
           }
         });
     }
@@ -78,7 +79,7 @@ const Details = () => {
                 className="btn   text-white bg-gradient-to-r from-sky-300 via-purple-400 to-pink-400 hover:from-pink-500 hover:via-orange-500 hover:to-yellow-500"
                 onClick={handleCart}
               >
-                <Link to="/dashBoard/cart">Add To Cart</Link>
+                Add To Cart
               </button>
             </>
           ) : (

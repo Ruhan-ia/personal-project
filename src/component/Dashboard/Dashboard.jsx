@@ -26,43 +26,12 @@ const Dashboard = () => {
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
-      {
-      //   isCoAdmin ? <>
-      //     <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/home'>
-      //  Home
-      // </Link></li>
-      // <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/profile'>
-      //  Profile
-      // </Link></li>
-      // <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/AllUser'>
-      //  AllUser
-      // </Link></li>
-      // <li className="text-xl font-bold font-spaceGrotest    ">
-      //     <Link to='/dashBoard/cart'>Cart
-      //     <span className="badge badge-secondary">+{cart?.length || 0}</span>
-
-      //     </Link>
-      //     </li>
-      //   </> : <>
-      //     <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/home'>
-      //  Home
-      // </Link></li>
-      // <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/profile'>
-      //  Profile
-      // </Link></li>
+     
       
-      // <li className="text-xl font-bold font-spaceGrotest    ">
-      //     <Link to='/dashBoard/cart'>Cart
-      //     <span className="badge badge-secondary">+{cart?.length || 0}</span>
-
-      //     </Link>
-      //     </li>
-      //   </>
-      }
       {
         isAdmin ? <>
-          <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/home'>
-       Home
+          <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/adminHome'>
+       AdminHome
       </Link></li>
       <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/profile'>
        Profile
@@ -83,11 +52,15 @@ const Dashboard = () => {
           </Link>
           </li>
         </>:<>
-          <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/home'>
-       Home
+          <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/userHome'>
+       UserHome
       </Link></li>
       <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/profile'>
        Profile
+      </Link></li>
+      
+      <li className="text-xl font-bold font-spaceGrotest"><Link to='/dashBoard/paymentHistory'>
+        Payment-History
       </Link></li>
       
       <li className="text-xl font-bold font-spaceGrotest    ">

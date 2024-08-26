@@ -4,14 +4,15 @@ import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 const useAdmin = () => {
-    const {user} = useContext(AuthContext);
+    const {user, loader} = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
     const {data:isAdmin, isLoading:isAdminLoading} = useQuery({
         queryKey:['isAdmin', user?.email],
+        enabled: !loader,
         queryFn: async () =>{
             const res = await axiosSecure.get(`/dashBoard/user/admin/${user.email}`)
 
-            return res.data.admin
+            return res.data?.admin
              
         }
     

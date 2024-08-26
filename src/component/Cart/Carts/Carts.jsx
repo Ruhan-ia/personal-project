@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { GrAdd } from "react-icons/gr";
 const Carts = ({ product }) => {
   const [, refetch] = useCart();
-  const { image,name,rating,price, _id } = product;
+  const { image,name,rating,price, id } = product;
   console.log(product);
 
   const handleDelete = toy =>{
@@ -53,6 +53,7 @@ const Carts = ({ product }) => {
       <div className="card-body">
         <h2 className="card-title font-spaceGrotest font-bold">{name}</h2>
 
+        <p className="font-spaceGrotest font-semibold ">Id: <span className="text-green-600 font-semibold">{id}</span></p>
         <p className="font-spaceGrotest font-semibold ">Ratings: <span className="text-green-600 font-semibold">{rating}</span></p>
         <p className="text-red-500 font-spaceGrotest ">${price}</p>
         

@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useCart from "../../../Hook/useCart";
 import { BsCart3 } from "react-icons/bs";
-import { GoSearch } from "react-icons/go";
-import SearchBar from "../../SearchBar/SearchBar";
+
 import SearchProduct from "../../SearchProduct/SearchProduct";
+import useAdmin from "../../../Hook/useAdmin";
 
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] =useAdmin();
   const [cart] = useCart();
   const handleLogOut = () => {
     logOut()
@@ -50,16 +51,26 @@ const Navbar = () => {
               <Link to="/about">About</Link>
             </li>
             <li className="text-cyan-400 font-semibold ">
-            <Link to="/dashBoard/cart"><BsCart3 className="font-bold text-3xl  text-rose-600"></BsCart3>Cart</Link>
+            <Link to="/dashBoard/cart"><BsCart3 className="font-bold text-3xl  text-rose-600"></BsCart3>Cart
+            
+            <span className="badge badge-secondary">
+                +{cart?.length || 0}
+              </span></Link>
           </li>
-            <li>
-              <Link to="/dashBoard/home">
+            
+            {
+              user && isAdmin &&  <li className="text-cyan-400 font-semibold ">  <Link to="/dashBoard/adminHome">
+              Dashboard
+              
+            </Link></li>
+            }
+            {
+                user && !isAdmin &&  <li className="text-cyan-400 font-semibold ">  <Link to="/dashBoard/userHome">
                 Dashboard
-                <span className="badge badge-secondary">
-                  +{cart?.length || 0}
-                </span>
-              </Link>
-            </li>
+                
+              </Link></li>
+            }
+            
           </ul>
         </div>
 
@@ -89,16 +100,24 @@ const Navbar = () => {
             <Link to="/about">About</Link>
           </li>
           <li className="text-cyan-400 font-semibold ">
-            <Link to="/dashBoard/cart"><BsCart3 className="font-bold text-3xl  text-rose-600"></BsCart3>Cart</Link>
-          </li>
-          <li className="text-cyan-400 font-semibold ">
-            <Link to="/dashBoard/home">
-              Dashboard
-              <span className="badge badge-secondary">
+            <Link to="/dashBoard/cart"><BsCart3 className="font-bold text-3xl  text-rose-600"></BsCart3>Cart
+            <span className="badge badge-secondary">
                 +{cart?.length || 0}
               </span>
             </Link>
           </li>
+          {
+              user && isAdmin &&  <li className="text-cyan-400 font-semibold ">  <Link to="/dashBoard/adminHome">
+              Dashboard
+              
+            </Link></li>
+            }
+            {
+                user && !isAdmin &&  <li className="text-cyan-400 font-semibold ">  <Link to="/dashBoard/userHome">
+                Dashboard
+                
+              </Link></li>
+            }
         </ul>
         </div>
       

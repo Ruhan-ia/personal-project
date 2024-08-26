@@ -1,24 +1,33 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import useCart from '../../../Hook/useCart';
+import useToys from '../../../Hook/useToys';
+import { AuthContext } from '../../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const CheckOutForm = () => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+    const [transactionId, setTransactionId]= useState('');
     const stripe = useStripe();
     const elements = useElements();
     const [axiosSecure] = useAxiosSecure();
-    const [cart] =useCart();
+    const [cart, refetch] =useCart();
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
     const totalPrice = cart.reduce((total, toy)=> total + toy.price, 0)
 
     useEffect(() =>{
 
-      axiosSecure.post('/create-payment-intent', {price: totalPrice})
+      if(totalPrice > 0){
+        axiosSecure.post('/create-payment-intent', {price: totalPrice})
       .then(res =>{
           console.log(res.data.clientSecret)
           setClientSecret(res.data.clientSecret)
       })
+      }
     }, [axiosSecure, totalPrice])
 
     const handleSubmit = async (event)=>{
@@ -45,8 +54,58 @@ const CheckOutForm = () => {
             setError(error.message)
         }
         else{
-            console.log("paymentMethod", paymentMethod);
+            console.log("payment Method", paymentMethod);
             setError('')
+        }
+        // confirm card payment
+
+        const {paymentIntent, error: confirmError}=await stripe.confirmCardPayment(clientSecret, {
+          payment_method:{
+            card: card,
+            billing_details:{
+              email: user?.email || 'anonymous',
+              name: user?.displayName || 'anonymous'
+            }
+          }
+
+         
+         
+          
+        })
+        if(confirmError){
+          console.log('confirmError')
+        }
+        else{
+          console.log('payment Intent', paymentIntent)
+          if(paymentIntent.status === 'succeeded'){
+            console.log('paymentIntent Id', paymentIntent.id)
+            setTransactionId(paymentIntent.id)
+
+            const payment = {
+              transactionId: paymentIntent.id,
+              email: user?.email,
+              price: totalPrice,
+              date: new Date(),
+              cartIds: cart.map(item => item._id),
+              toyIds: cart.map(toy => toy.name),
+              status:'pending'
+            }
+
+            const res = await axiosSecure.post('/payments', payment);
+            console.log('payment-saved', res.data)
+            refetch();
+              if(res.data?.result?.insertedId){
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `${name}successfully added to cart!!`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate('/dashBoard/paymentHistory')
+              }
+            
+          }
         }
     }
     return (
@@ -72,6 +131,8 @@ const CheckOutForm = () => {
         Pay
       </button>
       <p className='text-red-500 font-semibold'>{error}</p>
+      {transactionId && <p className='text-green-500 font-bold'>Your Transaction Id:{transactionId}</p>}
+      
     </form>
         </div>
     );
